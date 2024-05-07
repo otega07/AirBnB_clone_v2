@@ -1,5 +1,5 @@
 #!/usr/bin/python
-""" State Module for HBNB project holds class Amenity"""
+""" Module for HBNB project holds class Amenity"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv

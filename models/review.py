@@ -1,4 +1,4 @@
-#!/usr/binpython
+#!/usr/bin/python
 """ class Review Module for HBNB project """
 import models
 from models.base_model import BaseModel, Base
