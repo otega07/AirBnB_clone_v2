@@ -5,19 +5,19 @@ the class DBStorage
 
 import models
 from models.base_model import BaseModel, Base
-from models.amenity import Amenity
-from models.user import User
 from models.state import State
 from models.city import City
 from models.place import Place
+from models.user import User
+from models.amenity import Amenity
 from models.review import Review
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scooped_session, sessionmaker
 
-classes = {"Amenity": Amenity, "User": User, "State": State,
-           "City": City, "Place": Place, "Review": Review}
+classes = {"State": State, "City": City, "Place": Place,
+           "User": User, "Amenity": Amenity, "Review": Review}
 
 
 class DBStorage:
