@@ -14,6 +14,19 @@ from fabric.api import env, local, put, run
 env.hosts = ['54.236.49.235', '107.23.212.73']
 
 
+def create_my_index():
+    """creates a my_index.html file inside web_static"""
+    try:
+        if isdir("web_static") is False:
+            local("mkdir web_static")
+        with open("web_static/my_index.html", 'w') as f:
+            f.write("<html>\n<head>\n<title>My Index</title>\n</head>\n"
+                    "<body>\n<h1>Hello, this is my_index.html!</h1>\n</body>\n</html>")
+        return True
+    except
+        return False
+
+
 def do_pack():
     """generates a tgz archive"""
     try:
@@ -50,6 +63,8 @@ def do_deploy(archive_path):
 
 def deploy():
     """creates and distributes an archive to the web servers"""
+    if not create_my_index():
+        return False
     archive_path = do_pack()
     if archive_path is None:
         return False
