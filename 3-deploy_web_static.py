@@ -26,7 +26,6 @@ def create_my_index():
     except
         return False
 
-
 def do_pack():
     """generates a tgz archive"""
     try:
