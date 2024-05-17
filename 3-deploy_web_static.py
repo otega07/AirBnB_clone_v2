@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-fabric script based on the file 2-do_deploy_web_static.py that creates and
+Fabric script based on the file 2-do_deploy_web_static.py that creates and
 distributes an archive to the web servers
 
 execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/id_rsa -u ubuntu
@@ -8,14 +8,13 @@ execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/id_rsa -u ubuntu
 
 from datetime import datetime
 from os.path import exists, isdir
-
 from fabric.api import env, local, put, run
 
-env.hosts = ['54.236.49.235', '107.23.212.73']
+env.hosts = ['52.87.255.41', '54.157.176.117']
 
 
 def create_my_index():
-    """creates a my_index.html file inside web_static"""
+    """creates a my_index.html file inside web_static directory"""
     try:
         if isdir("web_static") is False:
             local("mkdir web_static")
@@ -23,8 +22,10 @@ def create_my_index():
             f.write("<html>\n<head>\n<title>My Index</title>\n</head>\n"
                     "<body>\n<h1>Hello, this is my_index.html!</h1>\n</body>\n</html>")
         return True
-    except
+    except Exception as e:
+        print(f"Failed to create my_index.html: {e}")
         return False
+
 
 def do_pack():
     """generates a tgz archive"""
@@ -35,7 +36,8 @@ def do_pack():
         file_name = "versions/web_static_{}.tgz".format(date)
         local("tar -cvzf {} web_static".format(file_name))
         return file_name
-    except:
+    except Exception as e:
+        print(f"Failed to create archive: {e}")
         return None
 
 
@@ -56,7 +58,8 @@ def do_deploy(archive_path):
         run('rm -rf /data/web_static/current')
         run('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except:
+    except Exception as e:
+        print(f"Failed to deploy archive: {e}")
         return False
 
 
