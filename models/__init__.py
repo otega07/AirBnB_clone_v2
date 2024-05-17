@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-initializes model package
-"""
 
 from os import getenv
 
