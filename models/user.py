@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" class User Module for HBNB project """
+"""class User"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv

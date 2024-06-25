@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the TestStateDocs classes
+The TestStateDocs classes
 """
 
 from datetime import datetime

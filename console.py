@@ -1,20 +1,20 @@
 #!/usr/bin/python3
-""" console """
+""" Console """
 
 import cmd
 from datetime import datetime
 import models
+from models.amenity import Amenity
 from models.base_model import BaseModel
-from models.state import State
 from models.city import City
 from models.place import Place
-from models.user import User
-from models.amenity import Amenity
 from models.review import Review
+from models.state import State
+from models.user import User
 import shlex  # for splitting the line along spaces except in double quotes
 
-classes = {"BaseModel": BaseModel, "State": State,
-           "City": City, "Place": Place, "User": User, "Amenity": Amenity, "Review": Review}
+classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -46,10 +46,10 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     try:
                         value = int(value)
-                    except ValueError:
+                    except:
                         try:
                             value = float(value)
-                        except ValueError:
+                        except:
                             continue
                 new_dict[key] = value
         return new_dict
@@ -140,12 +140,12 @@ class HBNBCommand(cmd.Cmd):
                                 if args[2] in integers:
                                     try:
                                         args[3] = int(args[3])
-                                    except ValueError:
+                                    except:
                                         args[3] = 0
                                 elif args[2] in floats:
                                     try:
                                         args[3] = float(args[3])
-                                    except ValueError:
+                                    except:
                                         args[3] = 0.0
                             setattr(models.storage.all()[k], args[2], args[3])
                             models.storage.all()[k].save()
@@ -159,7 +159,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

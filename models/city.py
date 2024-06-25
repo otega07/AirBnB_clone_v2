@@ -1,5 +1,5 @@
-#!/usr/bin/python
-""" City Module for HBNB project """
+#!usr/bin/python3
+"""class City"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv

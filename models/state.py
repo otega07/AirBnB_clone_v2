@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" class State module for HBNB project """
+"""class State"""
 import models
 from models.base_model import BaseModel, Base
 from models.city import City

@@ -1,5 +1,5 @@
-#!/usr/bin/python
-""" class Review Module for HBNB project """
+#!/usr/bin/python3
+"""class Review"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv

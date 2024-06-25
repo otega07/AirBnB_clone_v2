@@ -1,26 +1,26 @@
 #!/usr/bin/python3
 """
-Contains the TestDBStorageDocs and TestDBStorage classes
+TestDBStorageDocs and TestDBStorage classes
 """
 
 from datetime import datetime
 import inspect
 import models
 from models.engine import db_storage
+from models.amenity import Amenity
 from models.base_model import BaseModel
-from models.state import State
 from models.city import City
 from models.place import Place
-from models.user import User
-from models.amenity import Amenity
 from models.review import Review
+from models.state import State
+from models.user import User
 import json
 import os
 import pep8
 import unittest
 DBStorage = db_storage.DBStorage
-classes = {"State": State, "City": City, "Place": Place,
-           "User": User, "Amenity": Amenity, "Review": Review}
+classes = {"Amenity": Amenity, "City": City, "Place": Place,
+           "Review": Review, "State": State, "User": User}
 
 
 class TestDBStorageDocs(unittest.TestCase):

@@ -1,5 +1,5 @@
-#!/usr/bin/python
-""" Module for HBNB project holds class Amenity"""
+#!/usr/bin/python3
+"""class Amenity"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
